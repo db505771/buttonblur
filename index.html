@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Liquid Glass Button</title>
+  <title>Full Screen Glass Button</title>
   <style>
     html, body {
       margin: 0;
@@ -11,69 +11,56 @@
       width: 100%;
       height: 100%;
       background: transparent;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      overflow: hidden;
     }
 
-    /* GLASS BUTTON STYLING */
-    .glass-btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-
-      padding: 10px 20px;
-      font-size: 14px;
-      font-weight: 600;
-      color: #ffffff;
-
-      /* Button shape */
-      border-radius: 999px; /* Pill shape (change to 12px for squircle) */
-      border: 1px solid rgba(255, 255, 255, 0.25);
+    /* FULL SCREEN INTERACTIVE GLASS BUTTON */
+    .glass-btn-fullscreen {
+      width: 100%;
+      height: 100%;
+      box-sizing: border-box;
+      
+      /* Reset default button appearance */
+      appearance: none;
+      -webkit-appearance: none;
+      border: none;
       outline: none;
+      padding: 0;
+      margin: 0;
       cursor: pointer;
+      display: block;
+
+      /* Rounded corners */
+      border-radius: 24px;
 
       /* Liquid Glass Fill */
       background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(16px) saturate(180%);
-      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      backdrop-filter: blur(20px) saturate(180%);
+      -webkit-backdrop-filter: blur(20px) saturate(180%);
 
-      /* Depth & Specular Reflection */
+      /* Specular highlights & depth */
       box-shadow: 
         inset 0 1px 1px rgba(255, 255, 255, 0.35),
-        0 4px 12px rgba(0, 0, 0, 0.15);
+        0 8px 24px rgba(0, 0, 0, 0.2);
 
-      /* Smooth interaction transitions */
-      transition: all 0.2s cubic-bezier(0.25, 1, 0.5, 1);
+      /* Micro-interactions for tactile feedback */
+      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
       -webkit-tap-highlight-color: transparent;
     }
 
-    /* HOVER STATE (Desktop) */
-    .glass-btn:hover {
+    /* ACTIVE / TAP STATE */
+    .glass-btn-fullscreen:active {
+      transform: scale(0.98);
       background: rgba(255, 255, 255, 0.25);
-      border-color: rgba(255, 255, 255, 0.4);
       box-shadow: 
         inset 0 1px 1px rgba(255, 255, 255, 0.5),
-        0 6px 16px rgba(0, 0, 0, 0.2);
-    }
-
-    /* TAP / CLICK STATE (Mobile & Desktop) */
-    .glass-btn:active {
-      transform: scale(0.95); /* Scales down slightly like iOS native buttons */
-      background: rgba(255, 255, 255, 0.1);
-      box-shadow: 
-        inset 0 1px 1px rgba(255, 255, 255, 0.2),
-        0 2px 6px rgba(0, 0, 0, 0.1);
+        0 4px 12px rgba(0, 0, 0, 0.15);
     }
   </style>
 </head>
 <body>
 
-  <button class="glass-btn">
-    <span>Filter</span>
-  </button>
+  <button class="glass-btn-fullscreen" type="button"></button>
 
 </body>
 </html>
